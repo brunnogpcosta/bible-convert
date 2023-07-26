@@ -2,25 +2,27 @@
 import React, { useState } from 'react';
 
 
-interface ISidebarMenu{
+interface ISidebarMenu {
   itemSelected: string;
-  handleItemSelected: (item: string) => void; 
+  handleItemSelected: (item: string) => void;
 }
 
 const data = [
   {
     type: 'Massa',
-    keys: ['Beca', 'Siclo']
+    keys: ['Arratel', 'Beca', 'Siclo', 'Talento']
   },
   {
     type: 'Volume',
-    keys: ['Bato', 'Logue']
+    keys: ['Bato', 'Coro', 'Efa', 'Gômer', 'Him', 'Leteque', 'Logue', 'Ômer']
   },
   {
     type: 'Comprimento',
-    keys: ['Dedo', 'Palmo']
+    keys: ['Braça', 'Côvado', 'Dedo', 'Jornada de um sabado', 'Palmo', 'Tiro de Pedra', 'Tiro de Arco']
   },
 ];
+
+data.sort
 
 const SidebarMenu: React.FC<ISidebarMenu> = ({ itemSelected, handleItemSelected }) => {
   return (
