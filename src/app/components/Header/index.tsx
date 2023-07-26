@@ -2,11 +2,11 @@ import React from 'react';
 
 const Header: React.FC = () => {
   return (
-    <header className="flex items-center justify-between bg-orange-500 px-4 py-3">
-      {/* Logo */}
+    <header className="flex items-center justify-between bg-red-500 px-4 py-3">
+      {/* Logo
       <div>
         <img src="/path/to/logo.png" alt="Logo" className="w-10 h-10" />
-      </div>
+      </div> */}
 
       {/* Nome do site */}
       <div className="text-white text-lg font-bold">
