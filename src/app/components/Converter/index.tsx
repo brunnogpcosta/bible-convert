@@ -186,10 +186,9 @@ const Converter: React.FC<IConverter> = ({ itemSelected }) => {
 
     useEffect(() => {
         calcResult()
-    }, [currencyUnity, currencyValue, currencyUnityAbb]);
+    }, [currencyUnity, currencyValue, currencyUnityAbb, calcResult]);
 
     useEffect(() => {
-        console.log('Mudou')
         setResultValue(0)
         setCurrencyValue(0)
         setCurrencyUnity('')
@@ -243,7 +242,7 @@ const Converter: React.FC<IConverter> = ({ itemSelected }) => {
                     <h2 className="font-bold mb-2 p-2 bg-red-300">{i18n.t('titles.converter.last')}</h2>
                     <ul className="p-4">
                         {selectedConfig?.quotes.map((quote, index) => (
-                            <li>- {quote}</li>
+                            <li key={index}>- {quote}</li>
                         ))}
                     </ul>
                 </div> :
