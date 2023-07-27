@@ -30,7 +30,7 @@ const messages = {
                 volume: 'volume',
                 bath: 'bato',
                 kor: 'coro',
-                omer: 'efa',
+                ephah: 'efa',
                 gomer: 'gômer',
                 hin: 'him',
                 letech: 'leteque',
@@ -43,6 +43,29 @@ const messages = {
                 cubit: 'côvado',
                 finger: 'dedo',
                 sabbath: 'jornada de um sábado'
+
+            },
+            outputs: {
+                fullName: {
+                    empty: 'Selecione',
+                    grams: 'grama(s)',
+                    kilos: 'quilo(s)',
+                    meters: 'metro(s)',
+                    Kilometers: 'quilometro(s)',
+                    liters: 'litro(s)',
+                    milliliters: 'mililitro(s)',
+                    centimeters: 'centímetros'
+
+                },
+                abb: {
+                    grams: 'g',
+                    kilos: 'kg',
+                    meters: 'm',
+                    Kilometers: 'km',
+                    liters: 'l',
+                    milliliters: 'ml',
+                    centimeters: 'cm'
+                }
 
             }
         }

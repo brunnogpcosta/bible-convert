@@ -15,11 +15,11 @@ const data = [
   },
   {
     type: 'volume',
-    keys: ['bath', 'kor', 'omer', 'gomer', 'hin', 'letech', 'log']
+    keys: ['bath', 'kor', 'ephah', 'gomer', 'hin', 'letech', 'log']
   },
   {
     type: 'length',
-    keys: ['fathom', 'cubit', 'finger', 'sabbath', 'handbreadth', 'stonesThrow', 'bowshot']
+    keys: ['fathom', 'cubit', 'finger','handbreadth']
   },
 ];
 

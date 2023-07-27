@@ -30,7 +30,7 @@ const messages = {
                 volume: 'volume',
                 bath: 'bath',
                 kor: 'kor',
-                omer: 'omer',
+                ephah: 'omer',
                 gomer: 'gomer',
                 hin: 'hin',
                 letech: 'letech',
@@ -43,6 +43,28 @@ const messages = {
                 cubit: 'cubit',
                 finger: 'finger',
                 sabbath: 'sabbath day’s journey'
+
+            },
+            outputs: {
+                fullName: {
+                    empty: 'Select',
+                    grams: 'gram(s)',
+                    kilos: 'kilo(s)',
+                    meters: 'meter(s)',
+                    Kilometers: ' Kilometer(s)',
+                    liters: 'liters',
+                    milliliters: 'milliliter(s)',
+                    centimeters: 'centimeter(s)'
+                },
+                abb: {
+                    grams: 'g',
+                    kilos: 'kg',
+                    meters: 'm',
+                    Kilometers: 'km',
+                    liters: 'l',
+                    milliliters: 'ml',
+                    centimeters: 'cm'
+                }
 
             }
         }

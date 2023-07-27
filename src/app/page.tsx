@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <>
-      <Header handleLanguageSelected={handleLanguageSelected} />
+      <Header handleLanguageSelected={handleLanguageSelected} languageSelected={languageSelected} />
       <main className="flex min-h-screen flex-row justify-center p-24">
         <SidebarMenu itemSelected={itemSelected} handleItemSelected={handleItemSelected} />
         <Converter itemSelected={itemSelected} />
