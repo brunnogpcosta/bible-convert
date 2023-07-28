@@ -137,7 +137,37 @@ const messages = {
                 "2John": "2 John",
                 "3John": "3 John",
                 jude: "Jude",
-                revelation: "Revelation"
+                revelation: "Revelation",
+                verses: {
+                    'john.12.3': '',
+                    'leviticus.19.36': '',
+                    'proverbs.11.1': '',
+                    'proverbs.25.13': '',
+                    'proverbs.16.11': '',
+                    'proverbs.20.23': '',
+                    'exodus.38.26': '',
+                    'numbers.3.47': '',
+                    'exodus.30.24': '',
+                    'leviticus.27.25': '',
+                    'exodus.30.13': '',
+                    'matthew.25.28': '',
+                    '1Chronicles.29.7': '',
+                    'exodus.38.24': '',
+                    'exodus.25.39': '',
+                    '1Kings.9.28': '',
+                    'ezekiel.45.10': '',
+                    'ezekiel.45.14': '',
+                    'isaiah.5.10': '',
+                    'bible.1Kings.5.11': '',
+                    'bible.leviticus.19.36': '',
+                    'bible.exodus.16.16': '',
+                    'bible.hosea.3.2': '',
+                    'bible.leviticus.14.10': '',
+                    'bible.ezekiel.40.5': '',
+                    'bible.genesis.6.15': '',
+                    'bible.genesis.52.21': '',
+                    'bible.jeremiah.28.16': ''
+                }
             }
         }
     }

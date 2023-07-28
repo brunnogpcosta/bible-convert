@@ -9,6 +9,7 @@ import SEO from './components/Seo';
 import { useEffect } from 'react';
 import { initGA, logPageView } from './components/Analytics'
 import './page.css';
+import Modal from './components/Modal';
 
 export default function Home() {
   const title = i18n.t('metadata.title');
@@ -18,6 +19,9 @@ export default function Home() {
 
   const [itemSelected, setItemSelected] = useState('');
   const [languageSelected, setLanguageSelected] = useState(i18n.language);
+  const [showModal, setShowModal] = useState(false);
+  const [titleModal, setTitleModal] = useState('');
+  const [descriptionModal, setDescriptionModal] = useState('');
 
   const handleItemSelected = (item: string) => {
     setItemSelected(item);
@@ -27,6 +31,19 @@ export default function Home() {
     setLanguageSelected(item);
     i18n.changeLanguage(item);
   };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
+  const handleModal = (title: string, description: string) => {
+    console.log('Description: ', description)
+    setTitleModal(title)
+    setDescriptionModal(description)
+    setShowModal(true);
+  };
+
+
 
   useEffect(() => {
     initGA();
@@ -40,7 +57,8 @@ export default function Home() {
       <Header handleLanguageSelected={handleLanguageSelected} languageSelected={languageSelected} />
       <main className="flex min-h-screen flex-row justify-center p-24 main-container">
         <SidebarMenu itemSelected={itemSelected} handleItemSelected={handleItemSelected} />
-        <Converter itemSelected={itemSelected} />
+        <Converter itemSelected={itemSelected} handleQuoteSelected={(vers, desc) => handleModal(vers, desc)} />
+        {showModal && <Modal title={titleModal} description={description} onClose={handleModalClose}></Modal>}
       </main>
     </>
   );

@@ -2,7 +2,18 @@
     width: 100%;
     margin-top: 0; 
   }
+
+  .click-li:hover{
+    font-weight: 500;
+  }
   
+
+  .click-li {
+   cursor: pointer;
+   max-width: 150px;
+  }
+  
+
   @media screen and (max-width: 767px) {
     .converter-container {
       margin-top: 50px;
