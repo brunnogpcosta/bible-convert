@@ -245,7 +245,7 @@ const config = [
                                 onChange={val => handleUnity(val.target.value)}
                                 value={currencyUnity}
                             >
-                                <option value=''>{i18n.t('outputs.fullName.empty')}</option>
+                                <option value='empty'>{i18n.t('outputs.fullName.empty')}</option>
                                 {selectedConfig?.outputs.map((output, index) => (
                                     <option key={index} value={output}>
                                         {capitalizeFirstLetter(i18n.t('outputs.fullName.' + output))}
