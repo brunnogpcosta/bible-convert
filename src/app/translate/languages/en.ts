@@ -1,6 +1,10 @@
 const messages = {
     en: {
         translations: {
+            metadata: {
+                title: 'BibleConvert.com - Conversion of Biblical Measurements',
+                description: 'Biblical Measurement Converter - Convert weight, volume, and length mentioned in biblical passages to modern units. Simplify your biblical references with accurate conversion of arratel, siclo, cubit, and much more. Explore BibleConvert.com now!'
+            },
             titles: {
                 app: 'Biblical Measurements Converter',
                 measurements: {

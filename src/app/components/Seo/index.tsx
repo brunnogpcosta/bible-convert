@@ -1,5 +1,5 @@
 import { NextSeo, NextSeoProps } from 'next-seo';
-
+import { i18n } from '@/app/translate/i18n';
 interface SEOProps extends NextSeoProps {
   title: string;
   description: string;
@@ -8,8 +8,8 @@ interface SEOProps extends NextSeoProps {
 }
 
 const SEO: React.FC<SEOProps> = ({ title, description, image, url, ...rest }) => {
-  const siteName = 'Nome do Seu Site'; // Replace with your site name
-  const defaultImage = '/default-image.jpg'; // Path to the default image
+  const siteName = i18n.t('metadata.title'); 
+  const defaultImage = '/default-image.jpg'; 
 
   const seoConfig = {
     title: title ? `${title} | ${siteName}` : siteName,

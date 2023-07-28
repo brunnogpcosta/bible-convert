@@ -8,10 +8,10 @@ import { i18n } from './translate/i18n';
 import SEO from './components/Seo';
 
 export default function Home() {
-  const title = 'bibleConvert';
-  const description = 'Descrição da sua página';
-  const image = '/caminho-para-imagem.jpg'; // Opcional: caso queira uma imagem específica para a página
-  const url = 'https://www.seusite.com/sua-pagina'; // Substitua pela URL real da sua página
+  const title =  i18n.t('metadata.title');
+  const description = i18n.t('metadata.description');
+  const image = '/caminho-para-imagem.jpg'; 
+  const url = 'https://bibleconvert.com/'; 
 
 
   const [itemSelected, setItemSelected] = useState('');

@@ -1,6 +1,10 @@
 const messages = {
     pt: {
         translations: {
+            metadata:{
+                title: 'BibleConvert.com - Conversão de medidas bíblicas',
+                description: 'Conversor de Medidas Bíblicas - Converta massa, volume e comprimento mencionados nas passagens bíblicas para unidades modernas. Facilite suas referências bíblicas com a conversão precisa de arratel, siclo, braça e muito mais. Explore o BibleConvert.com agora!'
+            },
             titles: {
                 app: 'Conversor de medidas bíblicas',
                 measurements: {
