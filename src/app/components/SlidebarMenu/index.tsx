@@ -11,7 +11,7 @@ interface ISidebarMenu {
 const data = [
   {
     type: 'weight',
-    keys: ['pound', 'scholarship', 'shekel', 'talent']
+    keys: ['pound', 'bekah', 'shekel', 'talent']
   },
   {
     type: 'volume',
@@ -19,7 +19,7 @@ const data = [
   },
   {
     type: 'length',
-    keys: ['fathom', 'cubit', 'finger','handbreadth']
+    keys: ['fathom', 'cubit', 'finger','span']
   },
 ];
 

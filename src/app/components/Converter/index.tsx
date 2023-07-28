@@ -6,125 +6,6 @@ interface IConverter {
     itemSelected: string
 }
 
-// base always grams / liters /meters
-const config = [
-    {
-        key: 'pound',
-        value: 571.2,
-        outputs: ['grams', 'kilos'],
-        quotes: [
-            'João 12:3'
-        ]
-    },
-    {
-        key: 'scholarship',
-        value: 6,
-        outputs: ['grams', 'kilos'],
-        quotes: [
-            'Êxodo 38:26'
-        ]
-    },
-    {
-        key: 'shekel',
-        value: 11.4,
-        outputs: ['grams', 'kilos'],
-        quotes: [
-         'Êxodo 38:26',
-         'Números 3:47',
-         'Êxodo 30:24',
-         'Levítico 27:25',
-         'Êxodo 30:13'
-        ]
-    },
-    {
-        key: 'talent',
-        value: 34.272,
-        outputs: ['grams', 'kilos'],
-        quotes: [
-            // Passagens bíblicas relacionadas a "talent" aqui
-        ]
-    },
-    {
-        key: 'kor',
-        value: 208.2,
-        outputs: ['liters', 'milliliters'],
-        quotes: [
-            // Passagens bíblicas relacionadas a "kor" aqui
-        ]
-    },
-    {
-        key: 'ephah',
-        value: 17.62,
-        outputs: ['liters', 'milliliters'],
-        quotes: [
-            // Passagens bíblicas relacionadas a "ephah" aqui
-        ]
-    },
-    {
-        key: 'gomer',
-        value: 1.76,
-        outputs: ['liters', 'milliliters'],
-        quotes: [
-            // Passagens bíblicas relacionadas a "gomer" aqui
-        ]
-    },
-    {
-        key: 'him',
-        value: 3.47,
-        outputs: ['liters', 'milliliters'],
-        quotes: [
-            // Passagens bíblicas relacionadas a "him" aqui
-        ]
-    },
-    {
-        key: 'letech',
-        value: 88.1,
-        outputs: ['liters', 'milliliters'],
-        quotes: [
-            // Passagens bíblicas relacionadas a "letech" aqui
-        ]
-    },
-    {
-        key: 'log',
-        value: 0.29,
-        outputs: ['liters', 'milliliters'],
-        quotes: [
-            // Passagens bíblicas relacionadas a "log" aqui
-        ]
-    },
-    {
-        key: 'fathom',
-        value: 1.80,
-        outputs: ['centimeters', 'meters'],
-        quotes: [
-            "Ezekiel 40:5"
-        ]
-    },
-    {
-        key: 'cubit',
-        value: 0.0444,
-        outputs: ['centimeters', 'meters'],
-        quotes: [
-            "Genesis 6:15"
-        ]
-    },
-    {
-        key: 'finger',
-        value: 0.018,
-        outputs: ['centimeters', 'meters'],
-        quotes: [
-            // Passagens bíblicas relacionadas a "finger" aqui
-        ]
-    },
-    {
-        key: 'handbreadth',
-        value: 0.222,
-        outputs: ['centimeters', 'meters'],
-        quotes: [
-            // Passagens bíblicas relacionadas a "handbreadth" aqui
-        ]
-    }
-];
 
 
 const Converter: React.FC<IConverter> = ({ itemSelected }) => {
@@ -132,10 +13,152 @@ const Converter: React.FC<IConverter> = ({ itemSelected }) => {
     const [resultValue, setResultValue] = useState(0)
 
 
+// base always grams / liters /meters
+const config = [
+    {
+        key: 'pound',
+        value: 571.2,
+        outputs: ['grams', 'kilos'],
+        quotes: [
+            `${i18n.t('bible.john')} 12:3`,
+            `${i18n.t('bible.leviticus')} 19:36`,
+            `${i18n.t('bible.proverbs')} 11:1`,
+            `${i18n.t('bible.proverbs')} 25:13`,
+            `${i18n.t('bible.proverbs')} 16:11`,
+            `${i18n.t('bible.proverbs')} 20:23`
+        ]
+    },
+    {
+        key: 'bekah',
+        value: 6,
+        outputs: ['grams', 'kilos'],
+        quotes: [
+            `${i18n.t('bible.exodus')} 38:26`
+        ]
+    },
+    {
+        key: 'shekel',
+        value: 11.4,
+        outputs: ['grams', 'kilos'],
+        quotes: [
+            `${i18n.t('bible.exodus')} 38:26`,
+            `${i18n.t('bible.numbers')} 3:47`,
+            `${i18n.t('bible.exodus')} 30:24`,
+            `${i18n.t('bible.leviticus')} 27:25`,
+            `${i18n.t('bible.exodus')} 30:13`
+        ]
+    },
+    {
+        key: 'talent',
+        value: 34.272,
+        outputs: ['grams', 'kilos'],
+        quotes: [
+            `${i18n.t('bible.matthew')} 25:28`,
+            `${i18n.t('bible.1Chronicles')} 29:7`,
+            `${i18n.t('bible.exodus')} 38:24`,
+            `${i18n.t('bible.exodus')} 25:39`,
+            `${i18n.t('bible.1Kings')} 9:28`
+        ]
+    },
+    {
+        key: 'bath',
+        value: 20.82,
+        outputs: ['liters', 'milliliters'],
+        quotes: [
+            `${i18n.t('bible.ezekiel')} 45:10`,
+            `${i18n.t('bible.ezekiel')} 45:14`,
+            `${i18n.t('bible.isaiah')} 5:10`
+        ]
+    },
+    {
+        key: 'kor',
+        value: 208.2,
+        outputs: ['liters', 'milliliters'],
+        quotes: [
+            `${i18n.t('bible.1Kings')} 5:11`
+        ]
+    },
+    {
+        key: 'ephah',
+        value: 17.62,
+        outputs: ['liters', 'milliliters'],
+        quotes: [
+            `${i18n.t('bible.leviticus')} 19:36`
+        ]
+    },
+    {
+        key: 'gomer',
+        value: 1.76,
+        outputs: ['liters', 'milliliters'],
+        quotes: [
+            `${i18n.t('bible.exodus')} 16:16`
+        ]
+    },
+    {
+        key: 'hin',
+        value: 3.47,
+        outputs: ['liters', 'milliliters'],
+        quotes: [
+            `${i18n.t('bible.leviticus')} 19:36`
+        ]
+    },
+    {
+        key: 'letech',
+        value: 88.1,
+        outputs: ['liters', 'milliliters'],
+        quotes: [
+            `${i18n.t('bible.hosea')} 3:2`
+        ]
+    },
+    {
+        key: 'log',
+        value: 0.29,
+        outputs: ['liters', 'milliliters'],
+        quotes: [
+            `${i18n.t('bible.leviticus')} 14:10`
+        ]
+    },
+    {
+        key: 'fathom',
+        value: 1.80,
+        outputs: ['centimeters', 'meters'],
+        quotes: [
+            `${i18n.t('bible.ezekiel')} 40:5`
+        ]
+    },
+    {
+        key: 'cubit',
+        value: 0.0444,
+        outputs: ['centimeters', 'meters'],
+        quotes: [
+            `${i18n.t('bible.genesis')} 6:15`
+        ]
+    },
+    {
+        key: 'finger',
+        value: 0.018,
+        outputs: ['centimeters', 'meters'],
+        quotes: [
+            `${i18n.t('bible.genesis')} 52:21`
+        ]
+    },
+    {
+        key: 'span',
+        value: 0.222,
+        outputs: ['centimeters', 'meters'],
+        quotes: [
+            `${i18n.t('bible.jeremiah')} 28:16`
+        ]
+    }
+];
+
     const selectedConfig = config.find((item) => item.key === itemSelected);
     const [currencyUnity, setCurrencyUnity] = useState('')
     const [currencyUnityAbb, setCurrencyUnityAbb] = useState('')
 
+
+
+    
     const capitalizeFirstLetter = (str: string) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
