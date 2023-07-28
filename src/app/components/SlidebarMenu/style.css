@@ -1,0 +1,21 @@
+/* Mobile styles (applies to all screen sizes) */
+.sidebar-container {
+    width: 100%;
+  }
+  
+  .category-heading {
+    padding: 10px;
+  }
+  
+  /* Desktop styles (applies to screens wider than 768px) */
+  @media screen and (min-width: 768px) {
+    .sidebar-container {
+      width: 250px;
+    }
+  
+    .category-heading {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+  

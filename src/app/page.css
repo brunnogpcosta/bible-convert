@@ -1,0 +1,12 @@
+/* Mobile styles (applies to all screen sizes) */
+.main-container {
+    flex-direction: column;
+  }
+  
+  /* Desktop styles (applies to screens wider than 768px) */
+  @media screen and (min-width: 768px) {
+    .main-container {
+      flex-direction: row;
+    }
+  }
+  

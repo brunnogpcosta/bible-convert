@@ -1,0 +1,17 @@
+.converter-container {
+    width: 100%;
+    margin-top: 0; 
+  }
+  
+  @media screen and (max-width: 767px) {
+    .converter-container {
+      margin-top: 50px;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .converter-container {
+      width: 50%;
+    }
+  }
+  

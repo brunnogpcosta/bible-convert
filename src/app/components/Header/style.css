@@ -1,0 +1,56 @@
+/* Mobile styles (applies to all screen sizes) */
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .site-name {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+  
+  .title {
+    margin-top: 5px;
+    font-size: 16px;
+  }
+  
+  .language-buttons {
+    margin-top: 10px;
+    display: flex;
+  }
+  
+  .language-button {
+    border: none;
+    background-color: transparent;
+    padding: 5px;
+  }
+  
+  /* Desktop styles (applies to screens wider than 768px) */
+  @media screen and (min-width: 768px) {
+    .flex-container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .site-name {
+      margin-top: 0;
+      font-size: 24px;
+    }
+  
+    .title {
+      margin-top: 0;
+      font-size: 20px;
+    }
+  
+    .language-buttons {
+      margin-top: 0;
+    }
+  }
+  

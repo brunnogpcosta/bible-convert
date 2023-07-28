@@ -1,6 +1,7 @@
 "use client"
 import { i18n } from '@/app/translate/i18n';
 import React, { useEffect, useState } from 'react';
+import './style.css'
 
 interface IConverter {
     itemSelected: string
@@ -221,7 +222,7 @@ const config = [
     return (
         <>
             {itemSelected ?
-                <div className="w-2/5 bg-red-200 rounded-lg text-red-600 ">
+                <div className="w-2/5 bg-red-200 rounded-lg text-red-600 converter-container">
                     <h2 className="font-bold mb-2 p-2 bg-red-300 rounded-t-lg rounded-t-r">{capitalizeFirstLetter(i18n.t('units.' + itemSelected))}</h2>
 
                     <div className="p-4">
@@ -269,7 +270,7 @@ const config = [
                         ))}
                     </ul>
                 </div> :
-                <div className="w-2/5 bg-red-200 rounded-lg text-red-600 ">
+                <div className="w-2/5 bg-red-200 rounded-lg text-red-600 converter-container">
                     <h2 className="font-bold mb-2 p-2 bg-red-300 rounded-t-lg rounded-t-r">{i18n.t('titles.converter.first')}</h2>
 
                     <div className="p-4 flex h-5/6 justify-center items-center text-center">
