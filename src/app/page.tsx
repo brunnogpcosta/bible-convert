@@ -6,6 +6,8 @@ import Converter from './components/Converter'
 import { useState } from 'react';
 import { i18n } from './translate/i18n';
 import SEO from './components/Seo';
+import { useEffect } from 'react';
+import { initGA, logPageView } from './components/Analytics'
 import './page.css';
 
 export default function Home() {
@@ -25,6 +27,11 @@ export default function Home() {
     setLanguageSelected(item);
     i18n.changeLanguage(item);
   };
+
+  useEffect(() => {
+    initGA();
+    logPageView();
+  }, []);
 
   return (
     <>
