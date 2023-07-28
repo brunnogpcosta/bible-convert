@@ -28,6 +28,7 @@ export default function Home() {
 
   return (
     <>
+      <meta name="google-site-verification" content="dkLg9GAqawiLt719kp-J_bkbbackWV8rJFMZMrH9Tl4" />
       <SEO title={title} description={description} image={image} url={url} />
       <Header handleLanguageSelected={handleLanguageSelected} languageSelected={languageSelected} />
       <main className="flex min-h-screen flex-row justify-center p-24 main-container">
