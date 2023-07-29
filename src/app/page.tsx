@@ -37,7 +37,6 @@ export default function Home() {
   };
 
   const handleModal = (title: string, description: string) => {
-    console.log('Description: ', description)
     setTitleModal(title)
     setDescriptionModal(description)
     setShowModal(true);
@@ -58,7 +57,7 @@ export default function Home() {
       <main className="flex min-h-screen flex-row justify-center p-24 main-container">
         <SidebarMenu itemSelected={itemSelected} handleItemSelected={handleItemSelected} />
         <Converter itemSelected={itemSelected} handleQuoteSelected={(vers, desc) => handleModal(vers, desc)} />
-        {showModal && <Modal title={titleModal} description={description} onClose={handleModalClose}></Modal>}
+        {showModal && <Modal title={titleModal} description={descriptionModal} onClose={handleModalClose}></Modal>}
       </main>
     </>
   );
