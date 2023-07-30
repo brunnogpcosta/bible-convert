@@ -1,13 +1,22 @@
 /* Mobile styles (applies to all screen sizes) */
 .main-container {
-    flex-direction: column;
+  width: 70%;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+/* Desktop styles (applies to screens wider than 768px) */
+@media screen and (min-width: 768px) {
+  .main-container {
+    width: 70%;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 100px;
   }
-  
-  /* Desktop styles (applies to screens wider than 768px) */
-  @media screen and (min-width: 768px) {
-    .main-container {
-      flex-direction: row;
-      justify-content: center;
-    }
+}
+
+@media screen and (max-width: 769px) {
+  .main-container {
+    width: 100%;
   }
-  
+}
