@@ -35,7 +35,8 @@ const SidebarMenu: React.FC<ISidebarMenu> = ({ itemSelected, handleItemSelected 
   return (
     <nav className="text-red-600 bg-red-200 rounded-lg pb-5 mr-4 sidebar-container">
       {data.map((category, index) => (
-        <><div className={`font-bold mb-2 p-2 bg-red-300 ${index === 0 ? 'rounded-t-lg rounded-t-r' : ''}`} key={index}>
+        <div key={index}>
+        <div className={`font-bold mb-2 p-2 bg-red-300 ${index === 0 ? 'rounded-t-lg rounded-t-r' : ''}`}>
           {capitalizeFirstLetter(i18n.t('titles.measurements.' + category.type))}
         </div><ul className="ml-4">
             {category.keys.map((key, keyIndex) => (
@@ -47,7 +48,7 @@ const SidebarMenu: React.FC<ISidebarMenu> = ({ itemSelected, handleItemSelected 
                 {capitalizeFirstLetter(i18n.t('units.' + key))}
               </li>
             ))}
-          </ul></>
+          </ul></div>
       ))}
     </nav>
   );
