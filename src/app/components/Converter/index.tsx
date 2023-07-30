@@ -48,8 +48,8 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
         },
         {
             key: 'talent',
-            value: 34.272,
-            outputs: ['kilos', 'grams'],
+            value: 34272.00,
+            outputs: ['grams', 'kilos'],
             quotes: [
                 { vers: `${i18n.t('bible.matthew')} 25.28`, desc: `${i18n.t('bible.verses.matthew.25.28')}` },
                 { vers: `${i18n.t('bible.1Chronicles')} 29.7`, desc: `${i18n.t('bible.verses.1Chronicles.29.7')}` },
