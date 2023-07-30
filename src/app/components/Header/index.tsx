@@ -10,7 +10,7 @@ interface IHeader {
 
 const Header: React.FC<IHeader> = ({ handleLanguageSelected, languageSelected }) => {
   return (
-    <header className="bg-red-500 px-4 py-3">
+    <header className="bg-red-500 px-4 py-4">
       <div className="flex-container">
         {/* Nome do site */}
         <div className="site-name text-white text-lg font-bold">BibleConvert</div>

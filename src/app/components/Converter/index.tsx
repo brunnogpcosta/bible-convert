@@ -276,7 +276,7 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
                 <div className="w-2/5 bg-red-200 rounded-lg text-red-600 converter-container">
                     <h2 className="font-bold mb-2 p-2 bg-red-300 rounded-t-lg rounded-t-r">{i18n.t('titles.converter.first')}</h2>
 
-                    <div className="p-4 flex h-5/6 justify-center items-center text-center">
+                    <div className="p-4 mb-2 flex h-5/6 justify-center items-center text-center">
                         <h2> {i18n.t('titles.converter.select')}</h2>
                     </div>
                 </div>

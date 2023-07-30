@@ -11,6 +11,7 @@ import { initGA, logPageView } from './components/Analytics'
 import './page.css';
 import Modal from './components/Modal';
 import Script from "next/script"
+import Footer from './components/Footer';
 
 
 export default function Home() {
@@ -65,11 +66,12 @@ export default function Home() {
       <meta name="google-site-verification" content="dkLg9GAqawiLt719kp-J_bkbbackWV8rJFMZMrH9Tl4" />
       <SEO title={title} description={description} image={image} url={url} />
       <Header handleLanguageSelected={handleLanguageSelected} languageSelected={languageSelected} />
-      <main className="flex min-h-screen flex-row p-2 main-container">
+      <main className="flex flex-row p-2 main-container">
         <SidebarMenu itemSelected={itemSelected} handleItemSelected={handleItemSelected} />
         <Converter itemSelected={itemSelected} handleQuoteSelected={(vers, desc) => handleModal(vers, desc)} />
         {showModal && <Modal title={titleModal} description={descriptionModal} onClose={handleModalClose}></Modal>}
       </main>
+      <Footer/>
     </>
   );
 }
