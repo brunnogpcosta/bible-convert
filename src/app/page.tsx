@@ -10,6 +10,8 @@ import { useEffect } from 'react';
 import { initGA, logPageView } from './components/Analytics'
 import './page.css';
 import Modal from './components/Modal';
+import Script from "next/script"
+
 
 export default function Home() {
   const title = i18n.t('metadata.title');
@@ -44,13 +46,22 @@ export default function Home() {
 
 
 
-  useEffect(() => {
-    initGA();
-    logPageView();
-  }, []);
+  // useEffect(() => {
+  //   initGA();
+  //   logPageView();
+  // }, []);
 
   return (
     <>
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-T5J86DEMS2');
+        `}
+      </Script>
       <meta name="google-site-verification" content="dkLg9GAqawiLt719kp-J_bkbbackWV8rJFMZMrH9Tl4" />
       <SEO title={title} description={description} image={image} url={url} />
       <Header handleLanguageSelected={handleLanguageSelected} languageSelected={languageSelected} />
