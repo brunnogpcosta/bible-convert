@@ -12,6 +12,7 @@ import './page.css';
 import Modal from './components/Modal';
 import Script from "next/script"
 import Footer from './components/Footer';
+import AdBanner from './components/AdSense';
 
 
 export default function Home() {
@@ -63,6 +64,15 @@ export default function Home() {
           gtag('config', 'G-T5J86DEMS2');
         `}
       </Script>
+      <Script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9466959895851189`}
+        strategy="lazyOnload"
+        crossOrigin="anonymous"
+      />
+      {/* <AdBanner data-ad-slot="7434970023"
+        data-ad-format="auto"
+        data-full-width-responsive="true" /> */}
       <meta name="google-site-verification" content="dkLg9GAqawiLt719kp-J_bkbbackWV8rJFMZMrH9Tl4" />
       <SEO title={title} description={description} image={image} url={url} />
       <Header handleLanguageSelected={handleLanguageSelected} languageSelected={languageSelected} />
@@ -71,7 +81,7 @@ export default function Home() {
         <Converter itemSelected={itemSelected} handleQuoteSelected={(vers, desc) => handleModal(vers, desc)} />
         {showModal && <Modal title={titleModal} description={descriptionModal} onClose={handleModalClose}></Modal>}
       </main>
-      <Footer/>
-      </div>
+      <Footer />
+    </div>
   );
 }
