@@ -269,7 +269,7 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
                     <h2 className="font-bold mb-2 p-2 bg-red-300">{i18n.t('titles.converter.last')}</h2>
                     <ul className="p-4">
                         {selectedConfig?.quotes.map((quote, index) => (
-                            <li className='click-li' onClick={() => handleQuoteSelected(quote.vers, quote.desc)} key={index}>- {quote.vers}</li>
+                            <li className='click-li' onClick={() => handleQuoteSelected(quote.vers, quote.desc)} key={index}>&#10013; {quote.vers}</li>
                         ))}
                     </ul>
                 </div> :
