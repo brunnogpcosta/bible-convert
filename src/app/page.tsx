@@ -53,7 +53,7 @@ export default function Home() {
   // }, []);
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Script id="gtag-init" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
@@ -66,12 +66,12 @@ export default function Home() {
       <meta name="google-site-verification" content="dkLg9GAqawiLt719kp-J_bkbbackWV8rJFMZMrH9Tl4" />
       <SEO title={title} description={description} image={image} url={url} />
       <Header handleLanguageSelected={handleLanguageSelected} languageSelected={languageSelected} />
-      <main className="flex flex-row p-2 main-container">
+      <main className="flex flex-grow p-2 main-container">
         <SidebarMenu itemSelected={itemSelected} handleItemSelected={handleItemSelected} />
         <Converter itemSelected={itemSelected} handleQuoteSelected={(vers, desc) => handleModal(vers, desc)} />
         {showModal && <Modal title={titleModal} description={descriptionModal} onClose={handleModalClose}></Modal>}
       </main>
-      {/* <Footer/> */}
-    </>
+      <Footer/>
+      </div>
   );
 }

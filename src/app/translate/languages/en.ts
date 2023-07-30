@@ -7,6 +7,7 @@ const messages = {
             },
             titles: {
                 app: 'Biblical Measurements Converter',
+                footer: 'bibleConvert.com - All rights reserved.',
                 measurements: {
                     weight: 'weight',
                     volume: 'volume',
@@ -165,7 +166,8 @@ const messages = {
                     'ezekiel.40.5': "And behold a wall on the outside of the house round about, and in the man's hand a measuring reed of six cubits long by the cubit and an hand breadth: so he measured the breadth of the building, one reed; and the height, one reed.",
                     'genesis.6.15': 'And this is the fashion which thou shalt make it of: The length of the ark shall be three hundred cubits, the breadth of it fifty cubits, and the height of it thirty cubits.',
                     'jeremiah.52.21': 'And concerning the pillars, the height of one pillar was eighteen cubits; and a fillet of twelve cubits did compass it; and the thickness thereof was four fingers: it was hollow.',
-                    'jeremiah.28.16': 'Therefore thus saith the Lord; Behold, I will cast thee from off the face of the earth: this year thou shalt die, because thou hast taught rebellion against the Lord.'
+                    'jeremiah.28.16': 'Therefore thus saith the Lord; Behold, I will cast thee from off the face of the earth: this year thou shalt die, because thou hast taught rebellion against the Lord.',
+                    'john.3.16': '"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life". (John 3:16)'
                 }
             }
         }

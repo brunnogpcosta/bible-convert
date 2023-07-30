@@ -7,6 +7,7 @@ const messages = {
             },
             titles: {
                 app: 'Conversor de medidas bíblicas',
+                footer: 'bibleConvert.com - Todos os direitos reservados.',
                 measurements: {
                     weight: 'massa',
                     volume: 'volume',
@@ -165,7 +166,8 @@ const messages = {
                     'acts.27.28': 'E, lançando o prumo, acharam vinte braças; e, passando um pouco mais adiante, tornando a lançar o prumo, acharam quinze braças.',
                     'genesis.6.15': 'E desta maneira a farás: De trezentos côvados o comprimento da arca, e de cinqüenta côvados a sua largura, e de trinta côvados a sua altura.',
                     'jeremiah.52.21': 'Quanto às colunas, a altura de cada uma era de dezoito côvados, e um fio de doze côvados a cercava; e era a sua espessura de quatro dedos, e era oca.',
-                    'exodus.28.16': 'Quadrado e duplo, será de um palmo o seu comprimento, e de um palmo a sua largura.'
+                    'exodus.28.16': 'Quadrado e duplo, será de um palmo o seu comprimento, e de um palmo a sua largura.',
+                    'john.3.16': '"Porque Deus amou o mundo de tal maneira, que deu o seu Filho Unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna” (João 3:16).'
                 }
             },
 
