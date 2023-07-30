@@ -49,7 +49,7 @@ const SidebarMenu: React.FC<ISidebarMenu> = ({ itemSelected, handleItemSelected 
         </div>
         <div className="ml-4 mr-4 mt-4">
           <select
-            className="p-2 border rounded-md cursor-pointer w-full"
+            className="p-2 border rounded-md cursor-pointer w-full focus:ring focus:ring-red-600 focus:outline-none"
             onChange={(event) => handleItemSelected(event.target.value)}
           >
             <option value=''>{i18n.t('outputs.fullName.empty')}</option>
