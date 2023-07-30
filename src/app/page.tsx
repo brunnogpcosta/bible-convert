@@ -71,7 +71,7 @@ export default function Home() {
         <Converter itemSelected={itemSelected} handleQuoteSelected={(vers, desc) => handleModal(vers, desc)} />
         {showModal && <Modal title={titleModal} description={descriptionModal} onClose={handleModalClose}></Modal>}
       </main>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
 }
