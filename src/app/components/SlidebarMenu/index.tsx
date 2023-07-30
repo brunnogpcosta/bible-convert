@@ -1,8 +1,6 @@
-"use client"
 import { i18n } from '@/app/translate/i18n';
 import React, { useState } from 'react';
 import './style.css'
-
 
 interface ISidebarMenu {
   itemSelected: string;
@@ -20,36 +18,78 @@ const data = [
   },
   {
     type: 'length',
-    keys: ['fathom', 'cubit', 'finger','span']
+    keys: ['fathom', 'cubit', 'finger', 'span']
   },
 ];
 
-data.sort
+data.sort();
 
 const SidebarMenu: React.FC<ISidebarMenu> = ({ itemSelected, handleItemSelected }) => {
   const capitalizeFirstLetter = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
+  // State to manage dropdown visibility
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  // Function to toggle dropdown visibility
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
 
   return (
     <nav className="text-red-600 bg-red-200 rounded-lg pb-5 mr-4 sidebar-container">
-      {data.map((category, index) => (
-        <div key={index}>
-        <div className={`font-bold mb-2 p-2 bg-red-300 ${index === 0 ? 'rounded-t-lg rounded-t-r' : ''}`}>
-          {capitalizeFirstLetter(i18n.t('titles.measurements.' + category.type))}
-        </div><ul className="ml-4">
-            {category.keys.map((key, keyIndex) => (
-              <li
-                className="cursor-pointer mb-2"
-                key={keyIndex}
-                onClick={() => handleItemSelected(key)}
-              >
-                {capitalizeFirstLetter(i18n.t('units.' + key))}
-              </li>
-            ))}
-          </ul></div>
-      ))}
+      {/* Display dropdown on mobile */}
+      <div className="block sm:hidden">
+        <div
+          className={`font-bold mb-2 p-2 bg-red-300 rounded-t-lg rounded-t-r`}
+          onClick={toggleDropdown}
+        >
+          Menu
+        </div>
+        <div className="ml-4 mr-4 mt-4">
+          <select
+            className="p-2 border rounded-md cursor-pointer w-full"
+            onChange={(event) => handleItemSelected(event.target.value)}
+          >
+            <option value=''>{i18n.t('outputs.fullName.empty')}</option>
+            {data.flatMap((category, categoryIndex) =>
+              category.keys.map((key, keyIndex) => (
+                <option
+                  className="cursor-pointer"
+                  key={`${categoryIndex}-${keyIndex}`}
+                  value={key}
+                >
+                  {capitalizeFirstLetter(i18n.t('units.' + key))}
+                </option>
+              ))
+            )}
+          </select>
+        </div>
+
+      </div>
+
+      {/* Display sidebar menu on larger screens */}
+      <div className="hidden sm:block">
+        {data.map((category, index) => (
+          <div key={index}>
+            <div className={`font-bold mb-2 p-2 bg-red-300 ${index === 0 ? 'rounded-t-lg rounded-t-r' : ''}`}>
+              {capitalizeFirstLetter(i18n.t('titles.measurements.' + category.type))}
+            </div>
+            <ul className="ml-4">
+              {category.keys.map((key, keyIndex) => (
+                <li
+                  className="cursor-pointer mb-2"
+                  key={keyIndex}
+                  onClick={() => handleItemSelected(key)}
+                >
+                  {capitalizeFirstLetter(i18n.t('units.' + key))}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </nav>
   );
 };

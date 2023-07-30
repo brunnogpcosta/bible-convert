@@ -49,7 +49,7 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
         {
             key: 'talent',
             value: 34.272,
-            outputs: ['kilos','grams'],
+            outputs: ['kilos', 'grams'],
             quotes: [
                 { vers: `${i18n.t('bible.matthew')} 25.28`, desc: `${i18n.t('bible.verses.matthew.25.28')}` },
                 { vers: `${i18n.t('bible.1Chronicles')} 29.7`, desc: `${i18n.t('bible.verses.1Chronicles.29.7')}` },
@@ -121,7 +121,7 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
         {
             key: 'fathom',
             value: 1.80,
-            outputs: ['meters','centimeters'],
+            outputs: ['meters', 'centimeters'],
             quotes: [
                 { vers: `${i18n.t('bible.acts')} 27:28`, desc: `${i18n.t('bible.verses.acts.27.28')}` }
             ]
@@ -129,7 +129,7 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
         {
             key: 'cubit',
             value: 0.45,
-            outputs: ['meters','centimeters'],
+            outputs: ['meters', 'centimeters'],
             quotes: [
                 { vers: `${i18n.t('bible.genesis')} 6:15`, desc: `${i18n.t('bible.verses.genesis.6.15')}` }
             ]
@@ -137,7 +137,7 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
         {
             key: 'finger',
             value: 0.018,
-            outputs: ['meters','centimeters'],
+            outputs: ['meters', 'centimeters'],
             quotes: [
                 { vers: `${i18n.t('bible.jeremiah')} 52:21`, desc: `${i18n.t('bible.verses.jeremiah.52.21')}` }
             ]
@@ -145,7 +145,7 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
         {
             key: 'span',
             value: 0.222,
-            outputs: ['meters','centimeters'],
+            outputs: ['meters', 'centimeters'],
             quotes: [
                 { vers: `${i18n.t('bible.exodus')} 28:16`, desc: `${i18n.t('bible.verses.exodus.28.16')}` }
             ]
@@ -223,7 +223,7 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
             {itemSelected ?
                 <div className="w-2/5 bg-red-200 rounded-lg text-red-600 converter-container">
                     <div className='flex-col mb-2 p-2 bg-red-300 rounded-t-lg rounded-t-r'>
-                        <div className="flex justify-between">
+                        <div className="mobile-title">
                             <h2 className='font-bold'>{capitalizeFirstLetter(i18n.t('units.' + itemSelected))} </h2>
                             <p>1 {capitalizeFirstLetter(i18n.t('units.' + itemSelected))} = {selectedConfig?.value} {i18n.t('outputs.fullName.' + selectedConfig?.outputs[0])}</p>
                         </div>
@@ -277,7 +277,7 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
                     <h2 className="font-bold mb-2 p-2 bg-red-300 rounded-t-lg rounded-t-r">{i18n.t('titles.converter.first')}</h2>
 
                     <div className="p-4 flex h-5/6 justify-center items-center text-center">
-                        <h2 className="">{'<--'} {i18n.t('titles.converter.select')}</h2>
+                        <h2> {i18n.t('titles.converter.select')}</h2>
                     </div>
                 </div>
             }

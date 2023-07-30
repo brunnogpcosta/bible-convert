@@ -12,17 +12,20 @@
    cursor: pointer;
    max-width: 150px;
   }
+
+  .mobile-title{
+    justify-content: space-between;
+    display: flex;
+  }
   
 
   @media screen and (max-width: 767px) {
     .converter-container {
       margin-top: 50px;
     }
-  }
-  
-  @media screen and (min-width: 768px) {
-    .converter-container {
-      width: 50%;
+    .mobile-title{
+      justify-content: none;
+      display: block;
     }
   }
   

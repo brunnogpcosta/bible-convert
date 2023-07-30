@@ -21,7 +21,7 @@ const Header: React.FC<IHeader> = ({ handleLanguageSelected, languageSelected })
         <div className="language-buttons">
           <button
             onClick={() => handleLanguageSelected('pt-BR')}
-            className={languageSelected === 'pt-BR' ? 'border-2 border-white rounded-3xl mr-1' : ''}
+            className={languageSelected === 'pt-BR' ? 'border-2 border-white rounded-3xl mr-1' : ' mr-1'}
           >
             <img src="../../brazil.png" alt="Bandeira Brasil" className="w-8 h-8" />
           </button>

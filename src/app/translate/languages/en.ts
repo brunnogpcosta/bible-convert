@@ -14,7 +14,7 @@ const messages = {
                 },
                 converter: {
                     first: 'Measurements Converter',
-                    select: 'Choose a measurement from the side menu',
+                    select: 'Choose a measurement from the menu',
                     last: 'Biblical Reference Passages'
                 }
             },
