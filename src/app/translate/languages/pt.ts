@@ -3,7 +3,7 @@ const messages = {
         translations: {
             metadata: {
                 title: 'BibleConvert.com - Conversão de medidas bíblicas',
-                description: 'Conversor de Medidas Bíblicas - Converta massa, volume e comprimento mencionados nas passagens bíblicas para unidades modernas. Facilite suas referências bíblicas com a conversão precisa de arratel, siclo, braça e muito mais. Explore o BibleConvert.com agora!'
+                description: 'Conversor de Medidas Bíblicas - Converta massa, volume e comprimento mencionados nas passagens bíblicas para unidades modernas. Facilite suas referências bíblicas com a conversão precisa de arratel, beca, siclo, talento, bato, coro, efa, gômer, him, leteque, logue, braça, côvado, dedo, palmo e muito mais. Explore o Bible Convert agora!'
             },
             titles: {
                 app: 'Conversor de medidas bíblicas',
