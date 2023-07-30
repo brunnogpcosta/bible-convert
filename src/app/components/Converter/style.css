@@ -21,7 +21,7 @@
 
   @media screen and (max-width: 767px) {
     .converter-container {
-      margin-top: 50px;
+      margin-top: 20px;
     }
     .mobile-title{
       justify-content: none;

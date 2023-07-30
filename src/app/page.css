@@ -3,6 +3,7 @@
   width: 70%;
   flex-direction: column;
   margin: 0 auto;
+  margin-top: 10px;
 }
 
 /* Desktop styles (applies to screens wider than 768px) */
