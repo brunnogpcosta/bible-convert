@@ -51,7 +51,6 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
             value: 34272.00,
             outputs: ['grams', 'kilos'],
             quotes: [
-                { vers: `${i18n.t('bible.matthew')} 25.28`, desc: `${i18n.t('bible.verses.matthew.25.28')}` },
                 { vers: `${i18n.t('bible.1Chronicles')} 29.7`, desc: `${i18n.t('bible.verses.1Chronicles.29.7')}` },
                 { vers: `${i18n.t('bible.exodus')} 38.24`, desc: `${i18n.t('bible.verses.exodus.38.24')}` },
                 { vers: `${i18n.t('bible.exodus')} 25.39`, desc: `${i18n.t('bible.verses.exodus.25.39')}` },
