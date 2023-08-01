@@ -1,10 +1,11 @@
 import { i18n } from '@/app/translate/i18n';
 import React, { useState } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation'
 import './style.css'
 
 interface ISidebarMenu {
-  itemSelected: string;
-  handleItemSelected: (item: string) => void;
+  itemSelected?: string;
+  handleItemSelected?: (item: string) => void;
 }
 
 const data = [
@@ -24,7 +25,12 @@ const data = [
 
 data.sort();
 
-const SidebarMenu: React.FC<ISidebarMenu> = ({ itemSelected, handleItemSelected }) => {
+const SidebarMenu: React.FC<ISidebarMenu> = () => {
+  const searchParams = useSearchParams()
+  const router = useRouter();
+
+  const selectedValue = searchParams?.get('from') || ''
+  
   const capitalizeFirstLetter = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
@@ -36,6 +42,10 @@ const SidebarMenu: React.FC<ISidebarMenu> = ({ itemSelected, handleItemSelected 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
+
+  const handleRoute = (value: string) =>{
+    router.push(`?from=${value}`);
+  }
 
   return (
     <nav className="text-red-600 bg-red-200 rounded-lg pb-5 mr-4 sidebar-container">
@@ -50,15 +60,17 @@ const SidebarMenu: React.FC<ISidebarMenu> = ({ itemSelected, handleItemSelected 
         <div className="ml-4 mr-4 mt-4">
           <select
             className="p-2 border rounded-md cursor-pointer w-full focus:ring focus:ring-red-600 focus:outline-none"
-            onChange={(event) => handleItemSelected(event.target.value)}
+            onChange={(event) => handleRoute(event.target.value)}
+            value={selectedValue}
           >
-            <option value=''>{i18n.t('outputs.fullName.empty')}</option>
+            <option value={''}>{i18n.t('outputs.fullName.empty')}</option>
             {data.flatMap((category, categoryIndex) =>
               category.keys.map((key, keyIndex) => (
                 <option
                   className="cursor-pointer"
                   key={`${categoryIndex}-${keyIndex}`}
                   value={key}
+                  selected={key === selectedValue} 
                 >
                   {capitalizeFirstLetter(i18n.t('units.' + key))}
                 </option>
@@ -78,13 +90,13 @@ const SidebarMenu: React.FC<ISidebarMenu> = ({ itemSelected, handleItemSelected 
             </div>
             <ul className="ml-4">
               {category.keys.map((key, keyIndex) => (
-                <li
-                  className="cursor-pointer mb-2"
-                  key={keyIndex}
-                  onClick={() => handleItemSelected(key)}
-                >
-                  {capitalizeFirstLetter(i18n.t('units.' + key))}
-                </li>
+                  <li
+                    className="cursor-pointer mb-2"
+                    key={keyIndex}
+                    onClick={()=>handleRoute(key)}
+                  >
+                    {capitalizeFirstLetter(i18n.t('units.' + key))}
+                  </li>
               ))}
             </ul>
           </div>

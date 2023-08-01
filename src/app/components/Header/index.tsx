@@ -2,6 +2,8 @@
 import React from 'react';
 import { i18n } from '../../translate/i18n'
 import './style.css'
+import Link from 'next/link';
+
 
 interface IHeader {
   languageSelected?: string;
@@ -13,7 +15,9 @@ const Header: React.FC<IHeader> = ({ handleLanguageSelected, languageSelected })
     <header className="bg-red-500 px-4 py-4">
       <div className="flex-container">
         {/* Nome do site */}
+        <Link href='/'>
         <div className="site-name text-white text-lg font-bold">BibleConvert</div>
+        </Link>
 
         <div className="title text-white text-lg font-bold">{i18n.t('titles.app')}</div>
 

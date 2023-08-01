@@ -14,22 +14,16 @@ import Script from "next/script"
 import Footer from './components/Footer';
 import AdBanner from './components/AdSense';
 
-
 export default function Home() {
   const title = i18n.t('metadata.title');
   const description = i18n.t('metadata.description');
   const image = '/caminho-para-imagem.jpg';
   const url = 'https://bibleconvert.com/';
 
-  const [itemSelected, setItemSelected] = useState('');
   const [languageSelected, setLanguageSelected] = useState(i18n.language);
   const [showModal, setShowModal] = useState(false);
   const [titleModal, setTitleModal] = useState('');
   const [descriptionModal, setDescriptionModal] = useState('');
-
-  const handleItemSelected = (item: string) => {
-    setItemSelected(item);
-  };
 
   const handleLanguageSelected = (item: string) => {
     setLanguageSelected(item);
@@ -45,8 +39,6 @@ export default function Home() {
     setDescriptionModal(description)
     setShowModal(true);
   };
-
-
 
   // useEffect(() => {
   //   initGA();
@@ -77,8 +69,8 @@ export default function Home() {
       <SEO title={title} description={description} image={image} url={url} />
       <Header handleLanguageSelected={handleLanguageSelected} languageSelected={languageSelected} />
       <main className="flex flex-grow p-2 main-container">
-        <SidebarMenu itemSelected={itemSelected} handleItemSelected={handleItemSelected} />
-        <Converter itemSelected={itemSelected} handleQuoteSelected={(vers, desc) => handleModal(vers, desc)} />
+        <SidebarMenu />
+        <Converter handleQuoteSelected={(vers, desc) => handleModal(vers, desc)} />
         {showModal && <Modal title={titleModal} description={descriptionModal} onClose={handleModalClose}></Modal>}
       </main>
       <Footer />

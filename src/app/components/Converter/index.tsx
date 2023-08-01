@@ -1,18 +1,27 @@
 "use client"
 import { i18n } from '@/app/translate/i18n';
 import React, { useEffect, useState } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation'
 import './style.css'
 
 interface IConverter {
-    itemSelected: string
+    itemSelected?: string
     handleQuoteSelected: (title: string, description: string) => void;
 }
 
 
 
 const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) => {
+    const searchParams = useSearchParams()
+    const selectedValue = searchParams?.get('from') || ''
+    const [querySearch, setQuerySearch] = useState(selectedValue)
     const [currencyValue, setCurrencyValue] = useState(0)
     const [resultValue, setResultValue] = useState(0)
+
+    useEffect(() => {
+        setQuerySearch(selectedValue)
+    }, [selectedValue]);
+
 
 
     // base always grams / liters /meters
@@ -151,7 +160,7 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
         }
     ];
 
-    const selectedConfig = config.find((item) => item.key === itemSelected);
+    const selectedConfig = config.find((item) => item.key === querySearch);
     const [currencyUnity, setCurrencyUnity] = useState('')
     const [currencyUnityAbb, setCurrencyUnityAbb] = useState('')
 
@@ -215,16 +224,16 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
         setCurrencyValue(0)
         setCurrencyUnity('')
         setCurrencyUnityAbb('')
-    }, [itemSelected]);
+    }, [querySearch]);
 
     return (
         <>
-            {itemSelected ?
+            {querySearch ?
                 <div className="w-2/5 bg-red-200 rounded-lg text-red-600 converter-container">
                     <div className='flex-col mb-2 p-2 bg-red-300 rounded-t-lg rounded-t-r'>
                         <div className="mobile-title">
-                            <h2 className='font-bold'>{capitalizeFirstLetter(i18n.t('units.' + itemSelected))} </h2>
-                            <p>1 {capitalizeFirstLetter(i18n.t('units.' + itemSelected))} = {selectedConfig?.value} {i18n.t('outputs.fullName.' + selectedConfig?.outputs[0])}</p>
+                            <h2 className='font-bold'>{capitalizeFirstLetter(i18n.t('units.' + querySearch))} </h2>
+                            <p>1 {capitalizeFirstLetter(i18n.t('units.' + querySearch))} = {selectedConfig?.value} {i18n.t('outputs.fullName.' + selectedConfig?.outputs[0])}</p>
                         </div>
                     </div>
                     <div className="p-4">
