@@ -2,6 +2,7 @@
 import { i18n } from '@/app/translate/i18n';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation'
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import './style.css'
 
 interface IConverter {
@@ -11,18 +12,31 @@ interface IConverter {
 
 
 
-const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) => {
+const Converter: React.FC<IConverter> = ({ handleQuoteSelected }) => {
     const searchParams = useSearchParams()
-    const selectedValue = searchParams?.get('from') || ''
+    const router = useRouter();
+    const selectedValue = searchParams?.get('base') || ''
+    const selectedInverted = searchParams?.get('inverted') === '' ? false : searchParams?.get('inverted') === 'true' ? true : false;
+    const selectedOutput = searchParams?.get('to') || ''
+    const selectedInput = searchParams?.get('from') || ''
     const [querySearch, setQuerySearch] = useState(selectedValue)
-    const [currencyValue, setCurrencyValue] = useState(0)
+    const [currencyUnityOutput, setCurrencyUnityOutput] = useState(selectedOutput)
+    const [currencyUnityInput, setCurrencyUnityInput] = useState(selectedInput)
+    const [currencyValue, setCurrencyValue] = useState('0');
     const [resultValue, setResultValue] = useState(0)
-
-    useEffect(() => {
-        setQuerySearch(selectedValue)
-    }, [selectedValue]);
+    const [inverted, setInverted] = useState(selectedInverted);
 
 
+
+    const handleInvert = () => {
+        router.push(`?base=${selectedValue}&inverted=${!inverted}`);
+    };
+
+
+    const handleRoute = (value: string) => {
+        if (!inverted) router.push(`?base=${selectedValue}&inverted=${inverted}&to=${value}`);
+        else router.push(`?base=${selectedValue}&inverted=${inverted}&from=${value}`);
+    }
 
     // base always grams / liters /meters
     const config = [
@@ -161,70 +175,117 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
     ];
 
     const selectedConfig = config.find((item) => item.key === querySearch);
-    const [currencyUnity, setCurrencyUnity] = useState('')
     const [currencyUnityAbb, setCurrencyUnityAbb] = useState('')
-
-
 
 
     const capitalizeFirstLetter = (str: string) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
-    const handleUnity = (value: string) => {
-        setCurrencyUnity(value)
+    const handleUnityOutput = (value: string) => {
+        handleRoute(value)
+        setCurrencyUnityOutput(value)
+        if (value !== 'empty') setCurrencyUnityAbb(i18n.t('outputs.abb.' + value))
+    }
+
+    const handleUnityInput = (value: string) => {
+        handleRoute(value)
+        setCurrencyUnityInput(value)
         if (value !== 'empty') setCurrencyUnityAbb(i18n.t('outputs.abb.' + value))
     }
 
     const toRounded = (number: number) => {
-
         return Math.floor(number * 100) / 100;
     }
 
     const calcResult = () => {
         const base = (selectedConfig?.value ?? 0)
-        if (currencyUnity === 'grams') {
-            const result = currencyValue * base
-            setResultValue(toRounded(result))
+        const currencyValueFloat = parseFloat(currencyValue)
+
+        if (!inverted) {
+            if (currencyUnityOutput === 'grams') {
+                const result = currencyValueFloat * base
+                setResultValue(toRounded(result))
+            }
+
+            if (currencyUnityOutput === 'kilos') {
+                const result = currencyValueFloat * base / 1000
+                setResultValue(toRounded(result))
+            }
+
+            if (currencyUnityOutput === 'liters') {
+                const result = currencyValueFloat * base
+                setResultValue(toRounded(result))
+            }
+
+            if (currencyUnityOutput === 'milliliters') {
+                const result = currencyValueFloat * base * 1000
+                setResultValue(toRounded(result))
+            }
+
+            if (currencyUnityOutput === 'centimeters') {
+                const result = currencyValueFloat * base * 100
+                setResultValue(toRounded(result))
+            }
+
+            if (currencyUnityOutput === 'meters') {
+                const result = currencyValueFloat * base
+                setResultValue(toRounded(result))
+            }
+        } else {
+            if (currencyUnityInput === 'grams') {
+                const result = currencyValueFloat / base;
+                setResultValue(toRounded(result));
+            }
+
+            if (currencyUnityInput === 'kilos') {
+                const result = (currencyValueFloat * 1000) / base;
+                setResultValue(toRounded(result));
+            }
+
+            if (currencyUnityInput === 'liters') {
+                const result = currencyValueFloat / base;
+                setResultValue(toRounded(result));
+            }
+
+            if (currencyUnityInput === 'milliliters') {
+                const result = currencyValueFloat / (base * 1000);
+                setResultValue(toRounded(result));
+            }
+
+            if (currencyUnityInput === 'centimeters') {
+                const result = currencyValueFloat / (base * 100);
+                setResultValue(toRounded(result));
+            }
+
+            if (currencyUnityInput === 'meters') {
+                const result = currencyValueFloat / base;
+                setResultValue(toRounded(result));
+            }
         }
 
-        if (currencyUnity === 'kilos') {
-            const result = currencyValue * base / 1000
-            setResultValue(toRounded(result))
-        }
-
-        if (currencyUnity === 'liters') {
-            const result = currencyValue * base
-            setResultValue(toRounded(result))
-        }
-
-        if (currencyUnity === 'milliliters') {
-            const result = currencyValue * base * 1000
-            setResultValue(toRounded(result))
-        }
-
-        if (currencyUnity === 'centimeters') {
-            const result = currencyValue * base * 100
-            setResultValue(toRounded(result))
-        }
-
-        if (currencyUnity === 'meters') {
-            const result = currencyValue * base
-            setResultValue(toRounded(result))
-        }
 
     }
 
     useEffect(() => {
         calcResult()
-    }, [currencyUnity, currencyValue, currencyUnityAbb, calcResult]);
+    }, [currencyUnityOutput, currencyUnityInput, currencyValue, currencyUnityAbb, calcResult]);
 
     useEffect(() => {
         setResultValue(0)
-        setCurrencyValue(0)
-        setCurrencyUnity('')
+        setCurrencyValue('0')
+        setCurrencyUnityOutput('')
+        setCurrencyUnityInput('')
         setCurrencyUnityAbb('')
-    }, [querySearch]);
+    }, [inverted]);
+
+    useEffect(() => {
+        setQuerySearch(selectedValue)
+        setCurrencyUnityOutput(selectedOutput)
+        setCurrencyUnityInput(selectedInput)
+        setInverted(selectedInverted);
+    }, [selectedValue, selectedInverted, selectedInput, selectedOutput]);
+
 
     return (
         <>
@@ -232,44 +293,132 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
                 <div className="w-2/5 bg-red-200 rounded-lg text-red-600 converter-container">
                     <div className='flex-col mb-2 p-2 bg-red-300 rounded-t-lg rounded-t-r'>
                         <div className="mobile-title">
-                            <h2 className='font-bold'>{capitalizeFirstLetter(i18n.t('units.' + querySearch))} </h2>
+                            <div className='flex justify-between'>
+                                {!inverted ? (
+                                    <>
+                                        <div className='flex justify-between'>
+                                            <h2 className='mr-2 font-bold'>{capitalizeFirstLetter(i18n.t('units.' + querySearch))}</h2>
+                                            <h2>{'-->'}</h2>
+                                            <h2 className='ml-2 font-bold mr-2'>{selectedConfig?.outputs.map(item => i18n.t('outputs.titles.' + item)).join(', ')}</h2>
+                                        </div>
+                                        <button className='bg-red-400 rounded-lg ' onClick={handleInvert}><i className="fas fa-exchange-alt p-1"></i></button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div className='flex justify-between'>
+                                            <h2 className='mr-2 font-bold'>{selectedConfig?.outputs.map(item => i18n.t('outputs.titles.' + item)).join(', ')}</h2>
+                                            <h2>{'-->'}</h2>
+                                            <h2 className='ml-2 font-bold mr-2'>{capitalizeFirstLetter(i18n.t('units.' + querySearch))}</h2>
+                                        </div>
+                                        <button className='bg-red-400 rounded-lg' onClick={handleInvert}><i className="fas fa-exchange-alt p-1"></i></button>
+                                    </>
+                                )}
+                            </div>
+
+
                             <p>1 {capitalizeFirstLetter(i18n.t('units.' + querySearch))} = {selectedConfig?.value} {i18n.t('outputs.fullName.' + selectedConfig?.outputs[0])}</p>
                         </div>
                     </div>
+
                     <div className="p-4">
+
+                        <div className="mb-4">
+                            <label className="block text-sm font-medium mb-1">{i18n.t('labels.converter.unityInput')}</label>
+                            {!inverted ?
+                                <select
+                                    className="block w-full p-2 border rounded focus:ring focus:ring-red-600 focus:outline-none"
+                                    value={i18n.t('units.' + querySearch)}
+                                    disabled={!inverted}
+                                    onChange={val => handleUnityInput(val.target.value)}
+                                >
+                                    <option value={i18n.t('units.' + querySearch)}>{capitalizeFirstLetter(i18n.t('units.' + querySearch))} </option>
+                                </select>
+                                :
+
+                                <select
+                                    className="block w-full p-2 border rounded focus:ring focus:ring-red-600 focus:outline-none"
+                                    value={currencyUnityInput}
+                                    disabled={!inverted}
+                                    onChange={val => handleUnityInput(val.target.value)}
+                                >
+                                    <option value={'empty'}>{i18n.t('outputs.fullName.empty')}</option>
+
+                                    {selectedConfig?.outputs.map((input, index) => (
+                                        <option key={index} value={input}>
+                                            {capitalizeFirstLetter(i18n.t('outputs.fullName.' + input))}
+                                        </option>
+                                    ))}
+
+                                </select>
+
+
+                            }
+
+                        </div>
+
                         <div className="mb-4">
                             <label className="block text-sm font-medium mb-1">{i18n.t('labels.converter.value')}</label>
                             <input
                                 type="text"
                                 className="block w-full p-2 border rounded focus:ring focus:ring-red-600 focus:outline-none"
                                 value={currencyValue}
-                                onChange={val => {
-                                    const inputVal = Number(val.currentTarget.value);
-                                    setCurrencyValue(isNaN(inputVal) ? 0 : inputVal);
+                                onChange={event => {
+                                    const inputVal = event.currentTarget.value;
+                                    const filteredVal = inputVal.replace(/[^0-9.,]/g, '').replace(/,+/g, ',').replace(',', '.')
+                                    setCurrencyValue(filteredVal);
                                 }}
                             />
                         </div>
+
                         <div className="mb-4">
                             <label className="block text-sm font-medium mb-1">{i18n.t('labels.converter.unity')}</label>
-                            <select
-                                className="block w-full p-2 border rounded focus:ring focus:ring-red-600 focus:outline-none"
-                                onChange={val => handleUnity(val.target.value)}
-                                value={currencyUnity}
-                            >
-                                <option value='empty'>{i18n.t('outputs.fullName.empty')}</option>
-                                {selectedConfig?.outputs.map((output, index) => (
-                                    <option key={index} value={output}>
-                                        {capitalizeFirstLetter(i18n.t('outputs.fullName.' + output))}
-                                    </option>
-                                ))}
-                            </select>
+
+                            {inverted ?
+                                <select
+                                    className="block w-full p-2 border rounded focus:ring focus:ring-red-600 focus:outline-none"
+                                    onChange={val => handleUnityOutput(val.target.value)}
+                                    value={i18n.t('units.' + querySearch)}
+                                    disabled={inverted}
+                                >
+                                    <option value={i18n.t('units.' + querySearch)}>{capitalizeFirstLetter(i18n.t('units.' + querySearch))}</option>
+                                </select> :
+                                <select
+                                    className="block w-full p-2 border rounded focus:ring focus:ring-red-600 focus:outline-none"
+                                    onChange={val => handleUnityOutput(val.target.value)}
+                                    value={currencyUnityOutput}
+                                    disabled={inverted}
+                                >
+                                    <option value={'empty'}>{i18n.t('outputs.fullName.empty')}</option>
+
+                                    {selectedConfig?.outputs.map((output, index) => (
+                                        <option key={index} value={output}>
+                                            {capitalizeFirstLetter(i18n.t('outputs.fullName.' + output))}
+                                        </option>
+                                    ))}
+                                </select>
+
+
+                            }
+
+
                         </div>
+
+
                         <div className="mb-4">
-                            <label className="block text-sm font-medium mb-1">{i18n.t('labels.converter.result')}</label>
+                            {inverted ?
+                                (
+                                    <label className="block text-sm font-medium mb-1">{i18n.t('labels.converter.result')}
+                                        {currencyUnityOutput !== '' && currencyUnityOutput !== 'empty' ? ' ' + i18n.t('outputs.fullName.' + currencyUnityOutput) : ' ' + i18n.t('units.' + querySearch)}</label>
+                                ) : (
+                                    <label className="block text-sm font-medium mb-1">{i18n.t('labels.converter.result')}
+                                        {currencyUnityOutput !== '' && currencyUnityOutput !== 'empty' ? ' ' + i18n.t('outputs.fullName.' + currencyUnityOutput) : ''}</label>
+                                )
+                            }
+
                             <input
                                 type="text"
                                 readOnly
-                                value={resultValue + ' ' + currencyUnityAbb}
+                                value={inverted ? resultValue : resultValue + ' ' + currencyUnityAbb}
                                 className="block w-full p-8 border rounded bg-gray-100 focus:outline-none text-center text-xl"
                             />
                         </div>
@@ -285,7 +434,10 @@ const Converter: React.FC<IConverter> = ({ itemSelected, handleQuoteSelected }) 
                     <h2 className="font-bold mb-2 p-2 bg-red-300 rounded-t-lg rounded-t-r">{i18n.t('titles.converter.first')}</h2>
 
                     <div className="p-4 mb-2 flex h-5/6 justify-center items-center text-center">
-                        <h2> {i18n.t('titles.converter.select')}</h2>
+                        <div className='flex-row'>
+                            <i className="fas fa-ruler-combined text-2xl"></i>
+                            <h2> {i18n.t('titles.converter.select')}</h2>
+                        </div>
                     </div>
                 </div>
             }

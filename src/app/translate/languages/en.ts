@@ -22,8 +22,9 @@ const messages = {
             labels: {
                 converter: {
                     value: 'Value to be converted',
-                    unity: 'Unit of measurement',
-                    result: 'Result'
+                    unityInput: 'Input unit of measure',
+                    unity: 'Output unit of measure',
+                    result: 'Result in'
                 }
             },
             units: {
@@ -56,10 +57,20 @@ const messages = {
                     grams: 'gram(s)',
                     kilos: 'kilo(s)',
                     meters: 'meter(s)',
-                    Kilometers: ' Kilometer(s)',
+                    Kilometers: 'Kilometer(s)',
                     liters: 'liter(s)',
                     milliliters: 'milliliter(s)',
                     centimeters: 'centimeter(s)'
+                },
+                titles: {
+                    empty: 'Select',
+                    grams: 'Gram',
+                    kilos: 'Kilo',
+                    meters: 'Meter',
+                    Kilometers: 'Kilometer',
+                    liters: 'Liter',
+                    milliliters: 'Milliliter',
+                    centimeters: 'Centimeter'
                 },
                 abb: {
                     grams: 'g',

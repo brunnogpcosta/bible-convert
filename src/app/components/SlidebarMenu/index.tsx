@@ -29,7 +29,8 @@ const SidebarMenu: React.FC<ISidebarMenu> = () => {
   const searchParams = useSearchParams()
   const router = useRouter();
 
-  const selectedValue = searchParams?.get('from') || ''
+  const selectedValue = searchParams?.get('base') || ''
+
   
   const capitalizeFirstLetter = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -44,7 +45,7 @@ const SidebarMenu: React.FC<ISidebarMenu> = () => {
   };
 
   const handleRoute = (value: string) =>{
-    router.push(`?from=${value}`);
+    router.push(`?base=${value}&inverted=${false}`);
   }
 
   return (
