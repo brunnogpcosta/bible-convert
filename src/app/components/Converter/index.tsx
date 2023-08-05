@@ -357,20 +357,6 @@ const Converter: React.FC<IConverter> = ({ handleQuoteSelected }) => {
                         </div>
 
                         <div className="mb-4">
-                            <label className="block text-sm font-medium mb-1">{i18n.t('labels.converter.value')}</label>
-                            <input
-                                type="text"
-                                className="block w-full p-2 border rounded focus:ring focus:ring-red-600 focus:outline-none"
-                                value={currencyValue}
-                                onChange={event => {
-                                    const inputVal = event.currentTarget.value;
-                                    const filteredVal = inputVal.replace(/[^0-9.,]/g, '').replace(/,+/g, ',').replace(',', '.')
-                                    setCurrencyValue(filteredVal);
-                                }}
-                            />
-                        </div>
-
-                        <div className="mb-4">
                             <label className="block text-sm font-medium mb-1">{i18n.t('labels.converter.unity')}</label>
 
                             {inverted ?
@@ -403,6 +389,22 @@ const Converter: React.FC<IConverter> = ({ handleQuoteSelected }) => {
 
                         </div>
 
+                        <div className="mb-4">
+                            <label className="block text-sm font-medium mb-1">{i18n.t('labels.converter.value')}</label>
+                            <input
+                                type="text"
+                                className="block w-full p-2 border rounded focus:ring focus:ring-red-600 focus:outline-none"
+                                value={currencyValue}
+                                onChange={event => {
+                                    const inputVal = event.currentTarget.value;
+                                    const filteredVal = inputVal.replace(/[^0-9.,]/g, '').replace(/,+/g, ',').replace(',', '.')
+                                    setCurrencyValue(filteredVal);
+                                }}
+                            />
+                        </div>
+
+                       
+
 
                         <div className="mb-4">
                             {inverted ?
@@ -418,7 +420,7 @@ const Converter: React.FC<IConverter> = ({ handleQuoteSelected }) => {
                             <input
                                 type="text"
                                 readOnly
-                                value={inverted ? resultValue : resultValue + ' ' + currencyUnityAbb}
+                                value={inverted ? isNaN(resultValue) ? 0 : resultValue : isNaN(resultValue) ? 0 : resultValue + ' ' + currencyUnityAbb}
                                 className="block w-full p-8 border rounded bg-gray-100 focus:outline-none text-center text-xl"
                             />
                         </div>
