@@ -281,10 +281,10 @@ const Converter: React.FC<IConverter> = ({ handleQuoteSelected }) => {
 
     useEffect(() => {
         setQuerySearch(selectedValue)
-        // setCurrencyUnityOutput(selectedOutput)
-        // setCurrencyUnityInput(selectedInput)
+        setCurrencyUnityOutput(selectedOutput)
+        setCurrencyUnityInput(selectedInput)
         setInverted(selectedInverted);
-    }, [selectedValue, selectedInverted]);
+    }, [selectedValue, selectedInverted, selectedInput, selectedOutput]);
 
 
     return (
