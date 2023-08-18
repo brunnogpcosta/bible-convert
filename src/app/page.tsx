@@ -5,8 +5,6 @@ import Converter from './components/Converter'
 import { useState } from 'react';
 import { i18n } from './translate/i18n';
 import SEO from './components/Seo';
-import { useEffect } from 'react';
-import { initGA, logPageView } from './components/Analytics'
 import './page.css';
 import Modal from './components/Modal';
 import Script from "next/script"
@@ -39,21 +37,22 @@ export default function Home() {
     setShowModal(true);
   };
 
-  // useEffect(() => {
-  //   initGA();
-  //   logPageView();
-  // }, []);
-
   return (
     <div className="flex flex-col min-h-screen">
-      <Script id="gtag-init" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+     <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      />
 
-          gtag('config', 'G-T5J86DEMS2');
-        `}
+      <Script id="ga-tag" strategy="lazyOnload">
+        {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+                    page_path: window.location.pathname,
+                    });
+                `}
       </Script>
       <Script
         async
