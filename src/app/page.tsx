@@ -64,6 +64,7 @@ export default function Home() {
         data-ad-format="auto"
         data-full-width-responsive="true" /> */}
       <meta name="google-site-verification" content="dkLg9GAqawiLt719kp-J_bkbbackWV8rJFMZMrH9Tl4" />
+      <link rel="icon" href="/favicon.ico" sizes="any" />
       <SEO title={title} description={description} image={image} url={url} />
       <Header handleLanguageSelected={handleLanguageSelected} languageSelected={languageSelected} />
       <main className="flex flex-grow p-2 main-container">
